@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checkout | Velvet Crumbs</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#fff5f7;
+  padding:30px;
+}
+
+.container{
+  max-width:500px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:10px;
+}
+
+h2{
+  text-align:center;
+}
+
+input, select{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+
+.paymentBox{
+  display:none;
+  padding:10px;
+  background:#f1f1f1;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Checkout</h2>
+
+<input type="text" placeholder="Full Name" id="name">
+<input type="text" placeholder="Address" id="address">
+<input type="text" placeholder="Phone Number" id="phone">
+
+<select id="payment" onchange="showPayment()">
+  <option value="">Select Payment Method</option>
+  <option value="UPI">UPI</option>
+  <option value="Card">Card</option>
+  <option value="COD">Cash on Delivery</option>
+</select>
+
+<!-- UPI -->
+<div id="upiBox" class="paymentBox">
+  <p>Enter UPI ID</p>
+  <input type="text" placeholder="example@upi">
+</div>
+
+<!-- Card -->
+<div id="cardBox" class="paymentBox">
+  <input type="text" placeholder="Card Number">
+  <input type="text" placeholder="Expiry (MM/YY)">
+  <input type="text" placeholder="CVV">
+</div>
+
+<!-- COD -->
+<div id="codBox" class="paymentBox">
+  <p>Pay cash at delivery 🚚</p>
+</div>
+
+<button onclick="placeOrder()">Place Order</button>
+
+</div>
+
+<script>
+
+function showPayment(){
+  let method = document.getElementById("payment").value;
+
+  document.getElementById("upiBox").style.display = "none";
+  document.getElementById("cardBox").style.display = "none";
+  document.getElementById("codBox").style.display = "none";
+
+  if(method === "UPI"){
+    document.getElementById("upiBox").style.display = "block";
+  }
+  else if(method === "Card"){
+    document.getElementById("cardBox").style.display = "block";
+  }
+  else if(method === "COD"){
+    document.getElementById("codBox").style.display = "block";
+  }
+}
+
+function placeOrder(){
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
+  let payment = document.getElementById("payment").value;
+
+  if(name=="" || address=="" || phone=="" || payment==""){
+    alert("Please fill all details");
+    return;
+  }
+
+  alert("Order Placed Successfully 🎉");
+
+  localStorage.removeItem("cart");
+
+  window.location.href = "PorderPage.html";
+}
+
+</script>
+
+</body>
+</html>

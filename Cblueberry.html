@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Velvet Crumbs | Blueberry Cake</title>
+
+<style>
+
+body{
+background:#fff5f7;
+color:#333;
+font-family:Arial;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.navbar{
+  width:100%;
+  background:#ff4d6d;
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.navbar h2{
+  margin:0;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+.navbar a:hover{
+  text-decoration:underline;
+}
+
+/* content khali shift karayla */
+body{
+  margin-top:80px;
+}
+.product{
+width:900px;
+padding:40px;
+background:white;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+.product img{
+width:300px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.price{
+font-size:36px;
+font-weight:bold;
+color:#ff4d6d;
+}
+
+.tax{
+color:#888;
+font-size:14px;
+}
+
+.weight button{
+background:#fff;
+border:1px solid #ddd;
+padding:12px 20px;
+margin:5px;
+border-radius:25px;
+cursor:pointer;
+}
+
+.weight .active{
+background:#ffe4ea;
+border:1px solid #ff4d6d;
+}
+
+.qty{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin:10px 0;
+}
+
+.qty button{
+width:40px;
+height:40px;
+font-size:20px;
+cursor:pointer;
+}
+
+textarea{
+width:100%;
+height:90px;
+border:1px solid #ddd;
+padding:10px;
+border-radius:8px;
+}
+
+.buy{
+width:100%;
+padding:15px;
+background:#ff4d6d;
+border:none;
+color:white;
+margin-top:15px;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+
+.cartBtn{
+width:100%;
+padding:15px;
+background:#ff4d6d;
+border:none;
+color:white;
+margin-top:10px;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+
+.checkout-box{
+margin-top:25px;
+padding:20px;
+background:#f4f4f4;
+border-radius:10px;
+display:none;
+text-align:left;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.place{
+margin-top:10px;
+padding:12px;
+width:100%;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+.payment label{
+display:block;
+margin:6px 0;
+}
+
+.extra{
+display:none;
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="navbar">
+  <h2>Velvet Crumbs</h2>
+  <div class="links">
+    <a href="#" onclick="goBack()">⬅ Back</a>
+    <a href="Index0.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">Orders</a>
+  </div>
+</div>
+
+<div class="product">
+
+<h2>Blueberry Cake</h2>
+
+<img src="Blueberry-Cake.jpg">
+
+<div id="price" class="price">Rs. 629</div>
+<p class="tax">Incl. of all taxes</p>
+
+<h3>Weight</h3>
+
+<div class="weight">
+<button class="active" onclick="setWeight(450)">450 gm</button>
+<button onclick="setWeight(1000)">1 kg</button>
+<button onclick="setWeight(1500)">1.5 kg</button>
+<button onclick="setWeight(2000)">2 kg</button>
+<button onclick="setWeight(3000)">3 kg</button>
+</div>
+
+<h3>Quantity</h3>
+
+<div class="qty">
+<button onclick="minus()">-</button>
+<span id="qty">1</span>
+<button onclick="plus()">+</button>
+</div>
+
+<h3>Order Notes</h3>
+
+<textarea id="notes" placeholder="Notes about your order"></textarea>
+
+<button class="cartBtn" onclick="addToCart()">Add to Cart</button>
+
+<button class="buy" onclick="buyNow()">Buy it now</button>
+
+<div id="checkoutBox" class="checkout-box">
+
+<h3>Checkout</h3>
+
+<p>Product : Blueberry Cake</p>
+<p id="checkWeight"></p>
+<p id="checkQty"></p>
+<p id="checkPrice"></p>
+<p id="checkNotes"></p>
+
+<h3>Contact</h3>
+
+<input id="email" placeholder="Email">
+
+<h3>Delivery</h3>
+
+<input id="fname" placeholder="First Name">
+<input id="lname" placeholder="Last Name">
+<input id="address" placeholder="Address">
+<input id="city" placeholder="City">
+<input id="pin" placeholder="PIN Code">
+<input id="phone" placeholder="Phone Number">
+
+<h3>Payment Method</h3>
+
+<label><input type="radio" name="pay" onclick="showPay('upi')"> UPI</label>
+<label><input type="radio" name="pay" onclick="showPay('card')"> Card</label>
+<label><input type="radio" name="pay" onclick="showPay('cod')"> Cash on Delivery</label>
+
+<div id="upi" class="extra">
+<h4>Scan QR to Pay</h4>
+<img src="GooglePay_QR.png" width="150">
+</div>
+
+<div id="card" class="extra">
+<input placeholder="Card Number">
+<input placeholder="Expiry">
+<input placeholder="CVV">
+</div>
+
+<p id="cod" class="extra">
+Payment will be collected at delivery.
+</p>
+
+<button class="place" onclick="placeOrder()">Place Order</button>
+
+</div>
+
+</div>
+
+<script>
+
+let basePrice=629
+let weight=450
+let qty=1
+
+function setWeight(w){
+weight=w
+updatePrice()
+}
+
+function updatePrice(){
+let total=basePrice*(weight/450)*qty
+document.getElementById("price").innerText="Rs. "+Math.round(total)
+}
+
+function goBack(){
+  if(document.referrer !== ""){
+    window.history.back()
+  } else {
+    window.location.href = "Pcake.html"
+  }
+}
+
+function plus(){
+qty++
+document.getElementById("qty").innerText=qty
+updatePrice()
+}
+
+function minus(){
+if(qty>1){
+qty--
+document.getElementById("qty").innerText=qty
+updatePrice()
+}
+}
+
+function addToCart(){
+
+let total=basePrice*(weight/450)*qty
+
+let cart=JSON.parse(localStorage.getItem("cart")) || []
+
+cart.push({
+name:"Blueberry Cake",
+weight:weight,
+qty:qty,
+price:Math.round(total)
+})
+
+localStorage.setItem("cart",JSON.stringify(cart))
+
+alert("🛒 Blueberry Cake added to cart!")
+
+}
+
+function buyNow(){
+
+let total=basePrice*(weight/450)*qty
+let notes=document.getElementById("notes").value
+
+document.getElementById("checkoutBox").style.display="block"
+
+document.getElementById("checkWeight").innerText="Weight : "+weight+" gm"
+document.getElementById("checkQty").innerText="Quantity : "+qty
+document.getElementById("checkPrice").innerText="Total Price : Rs. "+Math.round(total)
+document.getElementById("checkNotes").innerText="Notes : "+notes
+
+}
+
+function showPay(type){
+
+document.getElementById("upi").style.display="none"
+document.getElementById("card").style.display="none"
+document.getElementById("cod").style.display="none"
+
+document.getElementById(type).style.display="block"
+
+}
+
+function placeOrder(){
+
+if(!validateCheckout()){
+return
+}
+
+alert("✅ Order placed successfully!")
+
+localStorage.removeItem("cart")
+
+window.location.href = "success.html"
+
+}
+
+</script>
+<script src="common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Velvet Crumbs | Truffle Cake</title>
+
+<style>
+
+body{
+background:#fff5f7;
+color:#333;
+font-family:Arial;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.navbar{
+  width:100%;
+  background:#ff4d6d;
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.navbar h2{
+  margin:0;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+.navbar a:hover{
+  text-decoration:underline;
+}
+
+
+body{
+  margin-top:80px;
+}
+.product{
+width:900px;
+padding:40px;
+background:white;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+.product img{
+width:300px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.price{
+font-size:36px;
+font-weight:bold;
+color:#ff4d6d;
+}
+
+.tax{
+color:#888;
+font-size:14px;
+}
+
+.weight button{
+background:#fff;
+border:1px solid #ddd;
+padding:12px 20px;
+margin:5px;
+border-radius:25px;
+cursor:pointer;
+}
+
+.weight .active{
+background:#ffe4ea;
+border:1px solid #ff4d6d;
+}
+
+.qty{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin:10px 0;
+}
+
+.qty button{
+width:40px;
+height:40px;
+font-size:20px;
+cursor:pointer;
+}
+
+textarea{
+width:100%;
+height:90px;
+border:1px solid #ddd;
+padding:10px;
+border-radius:8px;
+}
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:15px;
+}
+
+.cart{
+width:100%;
+padding:15px;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+
+.buy{
+width:100%;
+padding:15px;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+}
+
+/* CHECKOUT */
+
+.checkout-box{
+margin-top:25px;
+padding:20px;
+background:#f4f4f4;
+border-radius:10px;
+display:none;
+text-align:left;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.place{
+margin-top:10px;
+padding:12px;
+width:100%;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+.extra{
+display:none;
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="navbar">
+  <h2>Velvet Crumbs</h2>
+  <div class="links">
+    <a href="#" onclick="goBack()">⬅ Back</a>
+    <a href="Index0.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">Orders</a>
+  </div>
+</div>
+<div class="product">
+
+<h2>Truffle Cake</h2>
+
+<img src="truffle-cakes.jpg">
+
+<div id="price" class="price">Rs. 679</div>
+<p class="tax">Incl. of all taxes</p>
+
+<h3>Weight</h3>
+
+<div class="weight">
+<button class="active" data-weight="450">450 gm</button>
+<button data-weight="1000">1 kg</button>
+<button data-weight="1500">1.5 kg</button>
+<button data-weight="2000">2 kg</button>
+<button data-weight="3000">3 kg</button>
+</div>
+
+<h3>Quantity</h3>
+
+<div class="qty">
+<button onclick="minus()">-</button>
+<span id="qty">1</span>
+<button onclick="plus()">+</button>
+</div>
+
+<h3>Order Notes</h3>
+
+<textarea id="notes" placeholder="Notes about your order"></textarea>
+
+<div class="buttons">
+<button class="cart" onclick="addCart()">Add to Cart</button>
+<button class="buy" onclick="buyNow()">Buy it now</button>
+</div>
+
+<div id="checkoutBox" class="checkout-box">
+
+<h3>Checkout</h3>
+
+<p>Product : Truffle Cake</p>
+<p id="checkWeight"></p>
+<p id="checkQty"></p>
+<p id="checkPrice"></p>
+<p id="checkNotes"></p>
+
+<h3>Contact</h3>
+<input id="email" type="email" placeholder="Email">
+
+<h3>Delivery</h3>
+<input id="fname" type="text" placeholder="First Name" onkeypress="return lettersOnly(event)">
+<input id="lname" type="text" placeholder="Last Name" onkeypress="return lettersOnly(event)">
+<input id="address" type="text" placeholder="Address">
+<input id="city" type="text" placeholder="City" onkeypress="return lettersOnly(event)">
+<input id="pin" type="text" maxlength="6" placeholder="PIN Code" onkeypress="return numbersOnly(event)">
+<input id="phone" type="text" maxlength="10" placeholder="Phone Number" onkeypress="return numbersOnly(event)">
+
+<h3>Payment Method</h3>
+
+<label><input type="radio" name="pay" value="upi" onclick="showPayment()"> UPI</label>
+<label><input type="radio" name="pay" value="card" onclick="showPayment()"> Credit / Debit Card</label>
+<label><input type="radio" name="pay" value="cod" onclick="showPayment()"> Cash on Delivery</label>
+
+<div id="upiBox" class="extra">
+<p>Scan QR to Pay</p>
+<img src="GooglePay_QR.png" width="150">
+</div>
+
+<div id="cardBox" class="extra">
+<input type="text" placeholder="Card Number">
+<input type="text" placeholder="Expiry (MM/YY)">
+<input type="text" placeholder="CVV">
+</div>
+
+<p id="codText" class="extra">
+Pay cash when the order is delivered.
+</p>
+
+<button class="place" onclick="placeOrder()">Place Order</button>
+
+</div>
+
+</div>
+
+<script>
+
+let basePrice = 679
+let weight = 450
+let qty = 1
+
+function updatePrice(){
+let total = basePrice * (weight/450) * qty
+document.getElementById("price").innerText = "Rs. " + Math.round(total)
+}
+
+function plus(){
+if(qty < 10){
+qty++
+document.getElementById("qty").innerText = qty
+updatePrice()
+}
+}
+
+function minus(){
+if(qty>1){
+qty--
+document.getElementById("qty").innerText = qty
+updatePrice()
+}
+}
+
+let weightBtns = document.querySelectorAll(".weight button")
+
+weightBtns.forEach(btn=>{
+btn.onclick=function(){
+weightBtns.forEach(b=>b.classList.remove("active"))
+this.classList.add("active")
+weight=parseInt(this.dataset.weight)
+updatePrice()
+}
+})
+
+function addCart(){
+
+let total = basePrice * (weight/450) * qty
+
+let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+cart.push({
+name:"Truffle Cake",
+weight:weight,
+qty:qty,
+price:Math.round(total)
+})
+
+localStorage.setItem("cart",JSON.stringify(cart))
+
+alert("🛒 Truffle Cake added to cart!")
+
+}
+
+function buyNow(){
+
+let total = basePrice * (weight/450) * qty
+let notes = document.getElementById("notes").value
+
+document.getElementById("checkoutBox").style.display="block"
+
+document.getElementById("checkWeight").innerText="Weight : "+weight+" gm"
+document.getElementById("checkQty").innerText="Quantity : "+qty
+document.getElementById("checkPrice").innerText="Total Price : Rs. "+Math.round(total)
+document.getElementById("checkNotes").innerText="Notes : "+notes
+
+window.scrollTo(0,document.body.scrollHeight)
+
+}
+
+function lettersOnly(e){
+let char = String.fromCharCode(e.keyCode)
+return /[A-Za-z ]/.test(char)
+}
+
+function numbersOnly(e){
+let char = String.fromCharCode(e.keyCode)
+return /[0-9]/.test(char)
+}
+
+function showPayment(){
+
+document.getElementById("upiBox").style.display="none"
+document.getElementById("cardBox").style.display="none"
+document.getElementById("codText").style.display="none"
+
+let pay=document.querySelector('input[name="pay"]:checked')
+
+if(!pay) return
+
+if(pay.value=="upi"){
+document.getElementById("upiBox").style.display="block"
+}
+
+if(pay.value=="card"){
+document.getElementById("cardBox").style.display="block"
+}
+
+if(pay.value=="cod"){
+document.getElementById("codText").style.display="block"
+}
+
+}
+
+function goBack(){
+  if(document.referrer !== ""){
+    window.history.back()
+  } else {
+    window.location.href = "Pcake.html"
+  }
+}
+
+function placeOrder(){
+
+if(!validateCheckout()){
+return
+}
+
+alert("✅ Order placed successfully!")
+
+localStorage.removeItem("cart")
+
+window.location.href = "success.html"
+
+}
+
+</script>
+<script src="common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Velvet Crumbs | White Bread</title>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<style>
+body{
+  background:#fff5f7;
+  font-family:Arial;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.navbar{
+  width:100%;
+  background:#ff4d6d;
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.navbar h2{
+  margin:0;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+.product{
+  width:450px;
+  padding:30px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  text-align:center;
+}
+
+.product img{
+  width:250px;
+  border-radius:15px;
+}
+
+.price{
+  font-size:28px;
+  font-weight:bold;
+  color:#ff4d6d;
+}
+
+.qty{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:10px 0;
+}
+
+.qty button{
+  width:35px;
+  height:35px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.checkout-box{
+  display:none;
+  margin-top:20px;
+  background:#f4f4f4;
+  padding:15px;
+  border-radius:10px;
+  text-align:left;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+}
+
+.paymentBox{
+  display:none;
+  padding:10px;
+  background:white;
+  border-radius:6px;
+  margin-top:10px;
+}
+
+#reader{
+  width:200px;
+  margin:auto;
+}
+</style>
+</head>
+
+<body>
+<div class="navbar">
+  <h2>Velvet Crumbs</h2>
+  <div class="links">
+    <a href="#" onclick="goBack()">⬅ Back</a>
+    <a href="Index0.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">Orders</a>
+  </div>
+</div>
+<div class="product">
+
+<h2 id="productName">Classic White Bread</h2>
+<img src="whiteBread.jpg">
+
+<div id="price" class="price">Rs. 60</div>
+
+<h3>Quantity</h3>
+<div class="qty">
+<button onclick="minus()">-</button>
+<span id="qty">1</span>
+<button onclick="plus()">+</button>
+</div>
+
+<button onclick="addToCart()">Add to Cart</button>
+<button onclick="buyNow()">Buy Now</button>
+
+<div id="checkoutBox" class="checkout-box">
+
+<h3>Checkout</h3>
+<p>Product: <span id="checkProduct"></span></p>
+<p id="checkQty"></p>
+<p id="checkPrice"></p>
+
+<h3>Contact</h3>
+<input id="email" type="email" placeholder="Email">
+
+<h3>Delivery</h3>
+<input id="fname" placeholder="First Name">
+<input id="lname" placeholder="Last Name">
+<input id="address" placeholder="Address">
+<input id="city" placeholder="City">
+<input id="pin" placeholder="PIN Code">
+<input id="phone" placeholder="Phone Number">
+
+<h3>Payment</h3>
+
+<label><input type="radio" name="pay" value="upi" onclick="showPay('upiBox')"> UPI</label>
+<label><input type="radio" name="pay" value="card" onclick="showPay('cardBox')"> Card</label>
+<label><input type="radio" name="pay" value="cod" onclick="showPay('codBox')"> COD</label>
+
+<!-- UPI -->
+<div id="upiBox" class="paymentBox">
+<img src="GooglePay_QR.png" width="150">
+<button onclick="startScanner()">📷 Scan QR</button>
+<div id="reader"></div>
+<button onclick="markPaid()">I have paid</button>
+</div>
+
+<!-- CARD -->
+<div id="cardBox" class="paymentBox">
+<input id="cardNum" placeholder="Card Number">
+<input id="exp" placeholder="Expiry MM/YY">
+<input id="cvv" placeholder="CVV">
+<button onclick="cardPay()">Pay Now</button>
+</div>
+
+<!-- COD -->
+<div id="codBox" class="paymentBox">
+Pay when order is delivered
+</div>
+
+<button onclick="placeOrder()">Place Order</button>
+
+</div>
+
+</div>
+
+<script>
+
+let basePrice=60, qty=1;
+let paid=false;
+let scanner;
+
+function updatePrice(){
+  document.getElementById("price").innerText="Rs. "+(basePrice*qty);
+}
+
+function plus(){qty++;update();}
+function minus(){if(qty>1){qty--;update();}}
+function update(){
+  document.getElementById("qty").innerText=qty;
+  updatePrice();
+}
+
+function addToCart(){
+  let total=basePrice*qty;
+  let cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+  cart.push({
+    name:productName.innerText,
+    qty:qty,
+    price:total
+  });
+
+  localStorage.setItem("cart",JSON.stringify(cart));
+  alert("🛒 Added to cart!");
+}
+
+function goBack(){
+  if(document.referrer !== ""){
+    window.history.back()
+  } else {
+    window.location.href = "Breads&Rolls.html"
+  }
+}
+
+function buyNow(){
+  checkoutBox.style.display="block";
+  checkProduct.innerText=productName.innerText;
+  checkQty.innerText="Quantity: "+qty;
+  checkPrice.innerText="Total: Rs. "+(basePrice*qty);
+}
+
+function showPay(id){
+  upiBox.style.display="none";
+  cardBox.style.display="none";
+  codBox.style.display="none";
+  document.getElementById(id).style.display="block";
+}
+
+function startScanner(){
+  document.getElementById("reader").innerHTML="";
+  scanner = new Html5Qrcode("reader");
+
+  scanner.start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: 200 },
+    (decodedText) => {
+      alert("QR Scanned");
+      paid=true;
+      scanner.stop();
+    }
+  );
+}
+
+function markPaid(){
+  paid=true;
+  alert("✅ Payment successful");
+}
+
+function cardPay(){
+  if(cardNum.value==""||exp.value==""||cvv.value==""){
+    alert("Fill card details");
+    return;
+  }
+  paid=true;
+  alert("✅ Payment successful");
+}
+
+function placeOrder(){
+
+if(!validateCheckout()){
+return
+}
+
+alert("✅ Order placed successfully!")
+
+localStorage.removeItem("cart")
+
+window.location.href = "success.html"
+
+}
+
+</script>
+<script src="common.js"></script>
+</body>
+</html>

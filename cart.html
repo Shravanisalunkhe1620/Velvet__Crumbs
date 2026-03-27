@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cart | Velvet Crumbs</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#fff5f7;
+  margin:0;
+  padding:40px;
+}
+
+h1{
+  text-align:center;
+}
+
+.cartItem{
+  background:white;
+  padding:15px 20px;
+  margin:15px auto;
+  width:500px;
+  border-radius:10px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.deleteBtn{
+  background:none;
+  border:none;
+  color:#ff4d6d;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.total{
+  text-align:center;
+  font-size:22px;
+  margin-top:20px;
+  color:#ff4d6d;
+}
+
+.checkout{
+  display:block;
+  margin:20px auto;
+  padding:15px 30px;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  border-radius:25px;
+  font-size:18px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Your Cart</h1>
+
+<div id="cartList"></div>
+
+<div id="total" class="total"></div>
+
+<button class="checkout" onclick="checkout()">Checkout</button>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cartList = document.getElementById("cartList");
+
+function renderCart(){
+  cartList.innerHTML = ""; // Clear previous items
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    let div = document.createElement("div");
+    div.className = "cartItem";
+
+    div.innerHTML = `
+      <span>${item.name} - Rs.${item.price}</span>
+      <button class="deleteBtn" onclick="removeItem(${index})">&times;</button>
+    `;
+    cartList.appendChild(div);
+    total += item.price;
+  });
+
+  document.getElementById("total").innerText = "Total : Rs." + total;
+}
+
+function removeItem(index){
+  cart.splice(index, 1); // Remove from array
+  localStorage.setItem("cart", JSON.stringify(cart)); // Update storage
+  renderCart(); // Re-render
+}
+
+function checkout(){
+  if(cart.length === 0){
+    alert("Cart is empty");
+    return;
+  }
+  alert("Proceeding to checkout");
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

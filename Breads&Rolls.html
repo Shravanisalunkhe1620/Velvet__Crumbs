@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Breads & Rolls</title>
+
+<style>
+
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f5f5;
+  margin:0;
+}
+
+header{
+ background:#ff4d6d;
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+}
+
+header .cart{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+
+/* TITLE */
+
+h2{
+  text-align:center;
+  margin-top:20px;
+}
+
+/* SEARCH */
+
+.search{
+  text-align:center;
+  margin:20px;
+}
+
+.search input{
+  padding:10px;
+  width:250px;
+  border-radius:20px;
+  border:1px solid #ccc;
+}
+
+/* PRODUCTS */
+
+.products{
+  padding:15px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  gap:20px;
+}
+
+.products a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  width:180px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card img{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.card h3{
+  margin:10px 0 5px 0;
+  font-size:16px;
+}
+
+.price{
+  color:#b45f06;
+  font-weight:bold;
+}
+
+/* BACK BUTTON */
+
+.back{
+  text-align:center;
+  margin:30px;
+}
+
+.back a{
+  text-decoration:none;
+  color:white;
+  background:#b45f06;
+  padding:10px 20px;
+  border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Velvet Crumbs</h1>
+
+<a href="cart.html" class="cart">
+🛒 Cart (<span id="cartCount">0</span>)
+</a>
+
+</header>
+
+<h2>OUR BREADS & ROLLS</h2>
+
+
+<div class="products">
+
+<a href="BwhiteBread.html">
+<div class="card">
+<img src="whiteBread.jpg">
+<h3>Classic White Bread</h3>
+<p class="price">₹60</p>
+</div>
+</a>
+
+<a href="Bwheat.html">
+<div class="card">
+<img src="wheat.jpg">
+<h3>Whole Wheat Bread</h3>
+<p class="price">₹70</p>
+</div>
+</a>
+
+<a href="Bmultigrain.html">
+<div class="card">
+<img src="multigrain-bread.jpg">
+<h3>Multigrain Bread</h3>
+<p class="price">₹80</p>
+</div>
+</a>
+
+<a href="Bgarlic.html">
+<div class="card">
+<img src="garlic.jpg">
+<h3>Garlic Bread</h3>
+<p class="price">₹90</p>
+</div>
+</a>
+
+<a href="Bbaguette.html">
+<div class="card">
+<img src="french-baguettes.jpg">
+<h3>French Baguette</h3>
+<p class="price">₹100</p>
+</div>
+</a>
+
+<a href="BdinnerRoll.html">
+<div class="card">
+<img src="Dinner-Roll.jpg">
+<h3>Dinner Rolls</h3>
+<p class="price">₹80</p>
+</div>
+</a>
+
+<a href="BburgerBuns.html">
+<div class="card">
+<img src="burger-buns.jpg">
+<h3>Burger Buns</h3>
+<p class="price">₹70</p>
+</div>
+</a>
+
+<a href="Bcroissant.html">
+<div class="card">
+<img src="Butter Croissant.jpg">
+<h3>Butter Croissant</h3>
+<p class="price">₹120</p>
+</div>
+</a>
+
+
+<a href="BmilkBread.html">
+<div class="card">
+<img src="mB.jpg">
+<h3>Milk Bread</h3>
+<p class="price">₹75</p>
+</div>
+</a>
+
+<a href="BbrownBread.html">
+<div class="card">
+<img src="brownBread.jpg">
+<h3>Brown Bread</h3>
+<p class="price">₹70</p>
+</div>
+</a>
+
+
+</div>
+
+<div class="back">
+<a href="home.html">⬅ Back to Products</a>
+</div>
+
+</body>
+</html>
