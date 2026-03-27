@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Velvet Crumbs | Pastries</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f5f5;
+  margin:0;
+}
+
+header{
+ background:#ff4d6d;
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+}
+
+header .cart{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+h2{
+  text-align:center;
+  margin-top:20px;
+}
+
+.products{
+  padding:15px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  gap:20px;
+}
+
+.products a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  width:180px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card img{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.card h3{
+  margin:10px 0 5px 0;
+  font-size:16px;
+}
+
+
+.back{
+  text-align:center;
+  margin:20px;
+}
+
+.back a{
+  text-decoration:none;
+  color:white;
+
+  padding:10px 20px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+  
+<header>
+
+<h1>Velvet Crumbs</h1>
+
+<a href="cart.html" class="cart">
+🛒 Cart (<span id="cartCount">0</span>)
+</a>
+
+</header>
+
+<h2>OUR PASTRIES</h2>
+
+<div class="products">
+
+<!-- Chocolate Pastry -->
+<a href="Pchocolate.html">
+  <div class="card">
+    <img src="pcp.jpg" alt="Chocolate Pastry">
+    <h3>Chocolate Pastry</h3>
+    <p class="price">₹80</p>
+  </div>
+</a>
+
+<!-- Black Forest Pastry -->
+<a href="PblackForest.html">
+  <div class="card">
+    <img src="black_forest_pastry.jpg" alt="Black Forest Pastry">
+    <h3>Black Forest Pastry</h3>
+    <p class="price">₹90</p>
+  </div>
+</a>
+
+<!-- Pineapple Pastry -->
+<a href="Ppineapple.html">
+  <div class="card">
+    <img src="Pineapple Pastry.jpg" alt="Pineapple Pastry">
+    <h3>Pineapple Pastry</h3>
+    <p class="price">₹80</p>
+  </div>
+</a>
+
+<!-- Red Velvet Pastry -->
+<a href="PredVelvet.html">
+  <div class="card">
+    <img src="prp.jpg" alt="Red Velvet Pastry">
+    <h3>Red Velvet Pastry</h3>
+    <p class="price">₹110</p>
+  </div>
+</a>
+
+<!-- Butterscotch Pastry -->
+<a href="Pbutterscotch.html">
+  <div class="card">
+    <img src="pbp.jpg" alt="Butterscotch Pastry">
+    <h3>Butterscotch Pastry</h3>
+    <p class="price">₹90</p>
+  </div>
+</a>
+
+<!-- Strawberry Pastry -->
+<a href="Pstrawberry.html">
+  <div class="card">
+    <img src="Strawberry Pastry.jpg" alt="Strawberry Pastry">
+    <h3>Strawberry Pastry</h3>
+    <p class="price">₹85</p>
+  </div>
+</a>
+
+<!-- Vanilla Pastry -->
+<a href="Pvanilla.html">
+  <div class="card">
+    <img src="vp.jpg" alt="Vanilla Pastry">
+    <h3>Vanilla Pastry</h3>
+    <p class="price">₹70</p>
+  </div>
+</a>
+
+<!-- Fruit Pastry -->
+<a href="Pfruit.html">
+  <div class="card">
+    <img src="fruitp.png" alt="Fruit Pastry">
+    <h3>Fruit Pastry</h3>
+    <p class="price">₹100</p>
+  </div>
+</a>
+
+<!-- Oreo Pastry -->
+<a href="Poreo.html">
+  <div class="card">
+    <img src="pop.jpg" alt="Oreo Pastry">
+    <h3>Oreo Pastry</h3>
+    <p class="price">₹100</p>
+  </div>
+</a>
+
+<!-- Blueberry Pastry -->
+<a href="Pblueberry.html">
+  <div class="card">
+    <img src="blueberry.jpg" alt="Blueberry Pastry">
+    <h3>Blueberry Pastry</h3>
+    <p class="price">₹95</p>
+  </div>
+</a>
+
+<!-- Mango Pastry -->
+<a href="Pmango.html">
+  <div class="card">
+    <img src="pMANGOO.jpg" alt="Mango Pastry">
+    <h3>Mango Pastry</h3>
+    <p class="price">₹90</p>
+  </div>
+</a>
+
+<!-- Chocolate Truffle Pastry -->
+<a href="Ptruffle.html">
+  <div class="card">
+    <img src="chocoTRufflep.jpg" alt="Chocolate Truffle Pastry">
+    <h3>Chocolate Truffle Pastry</h3>
+    <p class="price">₹110</p>
+  </div>
+</a>
+
+</div>
+
+<div class="back">
+  <a href="home.html">⬅ Back to Products</a>
+</div>
+
+</body>
+</html>

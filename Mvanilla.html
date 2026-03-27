@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Velvet Crumbs | Vanilla Muffin</title>
+
+<style>
+
+body{
+background:#fff5f7;
+font-family:Arial;
+margin:0;
+}
+
+/* NAVBAR */
+.navbar{
+  width:100%;
+  background:#ff4d6d;
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+/* PRODUCT */
+.product{
+width:450px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+text-align:center;
+margin:120px auto;
+}
+
+.product img{
+width:250px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.price{
+font-size:28px;
+font-weight:bold;
+color:#ff4d6d;
+}
+
+.qty{
+display:flex;
+justify-content:center;
+gap:15px;
+margin:10px 0;
+}
+
+.qty button{
+width:35px;
+height:35px;
+font-size:18px;
+cursor:pointer;
+}
+
+.buy{
+width:100%;
+padding:12px;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:25px;
+margin-top:10px;
+cursor:pointer;
+}
+
+.checkout-box{
+margin-top:20px;
+padding:20px;
+background:#f4f4f4;
+border-radius:10px;
+display:none;
+text-align:left;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+}
+
+.paymentBox{
+display:none;
+background:white;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+}
+
+.place{
+margin-top:10px;
+padding:12px;
+width:100%;
+background:#ff4d6d;
+border:none;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <h2>Velvet Crumbs</h2>
+  <div>
+    <a href="#" onclick="goBack()">⬅ Back</a>
+    <a href="Index0.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">Orders</a>
+  </div>
+</div>
+
+<div class="product">
+
+<h2>Vanilla Muffin</h2>
+
+<img src="BakeryStyleVanillaMuffins.jpg">
+
+<div id="price" class="price">Rs. 90</div>
+
+<h3>Quantity</h3>
+
+<div class="qty">
+<button onclick="minus()">-</button>
+<span id="qty">1</span>
+<button onclick="plus()">+</button>
+</div>
+
+<button class="buy" onclick="addToCart()">Add to Cart</button>
+<button class="buy" onclick="buyNow()">Buy Now</button>
+
+<div id="checkoutBox" class="checkout-box">
+
+<h3>Checkout</h3>
+
+<p id="checkQty"></p>
+<p id="checkPrice"></p>
+
+<h3>Contact</h3>
+<input id="email" placeholder="Email">
+
+<h3>Delivery</h3>
+<input id="fname" placeholder="First Name" onkeypress="return /[A-Za-z]/.test(event.key)">
+<input id="lname" placeholder="Last Name" onkeypress="return /[A-Za-z]/.test(event.key)">
+<input id="address" placeholder="Address">
+<input id="city" placeholder="City" onkeypress="return /[A-Za-z ]/.test(event.key)">
+<input id="pin" placeholder="PIN Code" maxlength="6" onkeypress="return /[0-9]/.test(event.key)">
+<input id="phone" placeholder="Phone" maxlength="10" onkeypress="return /[0-9]/.test(event.key)">
+
+<h3>Payment</h3>
+
+<label><input type="radio" name="pay" value="upi" onclick="showPay('upi')"> UPI</label>
+<label><input type="radio" name="pay" value="card" onclick="showPay('card')"> Card</label>
+<label><input type="radio" name="pay" value="cod" onclick="showPay('cod')"> COD</label>
+
+<div id="upi" class="paymentBox">
+<img src="GooglePay_QR.png" width="120"><br>
+<button onclick="markPaid()">I have paid</button>
+</div>
+
+<div id="card" class="paymentBox">
+<input id="cardNum" placeholder="Card Number">
+<input id="exp" placeholder="MM/YY">
+<input id="cvv" placeholder="CVV">
+<button onclick="cardPay()">Pay</button>
+</div>
+
+<div id="cod" class="paymentBox">
+Pay at delivery
+</div>
+
+<button class="place" onclick="placeOrder()">Place Order</button>
+
+</div>
+
+</div>
+
+<script>
+
+let price=90
+let qty=1
+let paid=false
+
+function updatePrice(){
+document.getElementById("price").innerText="Rs. "+(price*qty)
+}
+
+function plus(){ qty++; document.getElementById("qty").innerText=qty; updatePrice() }
+function minus(){ if(qty>1){ qty--; document.getElementById("qty").innerText=qty; updatePrice() } }
+
+function goBack(){
+if(document.referrer!="") window.history.back()
+else window.location.href="PMuffins&Fruitcakes.html"
+}
+
+// CART
+function addToCart(){
+let cart=JSON.parse(localStorage.getItem("cart"))||[]
+cart.push({name:"Vanilla Muffin",price:price,qty:qty})
+localStorage.setItem("cart",JSON.stringify(cart))
+alert("Added to cart")
+}
+
+// BUY
+function buyNow(){
+
+let total=price*qty
+
+let product={
+name:document.querySelector("h2").innerText,
+qty:qty,
+price:total
+}
+
+localStorage.setItem("currentOrder",JSON.stringify(product))
+
+document.getElementById("checkoutBox").style.display="block"
+document.getElementById("checkQty").innerText="Qty: "+qty
+document.getElementById("checkPrice").innerText="Total: Rs. "+total
+}
+
+// PAYMENT UI
+function showPay(type){
+document.getElementById("upi").style.display="none"
+document.getElementById("card").style.display="none"
+document.getElementById("cod").style.display="none"
+document.getElementById(type).style.display="block"
+}
+
+// UPI
+function markPaid(){
+paid=true
+alert("UPI Paid")
+}
+
+// CARD
+function cardPay(){
+let c=document.getElementById("cardNum").value
+let e=document.getElementById("exp").value
+let v=document.getElementById("cvv").value
+
+if(c==""||e==""||v==""){ alert("Fill card details"); return }
+paid=true
+alert("Card Paid")
+}
+
+// ORDER
+function placeOrder(){
+
+if(!validateCheckout()) return
+
+let payment=document.querySelector('input[name="pay"]:checked')
+
+if(payment.value!="cod" && !paid){
+alert("Complete payment first")
+return
+}
+
+let order=JSON.parse(localStorage.getItem("currentOrder"))
+order.date=new Date().toLocaleString()
+
+let orders=JSON.parse(localStorage.getItem("orders"))||[]
+orders.push(order)
+
+localStorage.setItem("orders",JSON.stringify(orders))
+
+localStorage.removeItem("currentOrder")
+localStorage.removeItem("cart")
+
+alert("Order placed!")
+
+window.location.href="orders.html"
+}
+
+</script>
+
+<script src="common.js"></script>
+
+</body>
+</html>

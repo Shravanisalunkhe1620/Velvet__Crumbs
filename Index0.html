@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvet Crumbs Bakery</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#fff5f7;
+}
+
+/* HEADER */
+header{
+    background:#ff4d6d;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    text-decoration:underline;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:50px 10px;
+    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1604917877935-bdfe5aa01a7a?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+    background-size:cover;
+    color:white;
+}
+
+.hero h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.btn{
+    background:#ff4d6d;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.btn:hover{
+    background:#e03e5c;
+}
+
+/* PRODUCTS */
+.products{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:50px 20px;
+    background:#fff0f5;
+    
+}
+
+.products a {
+    text-decoration: none; 
+    color: inherit;         
+}
+
+.product-title{
+text-align:center;
+margin-top:40px;
+color:#ff4d6d;
+font-size:34px;
+}
+
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    width:220px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+    height:150px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin:10px 0 5px;
+    color:#ff4d6d;
+}
+
+.card p{
+    margin:0;
+    color:#555;
+    font-size:14px;
+}
+
+/* ABOUT */
+.about{
+    text-align:center;
+    padding:60px 20px;
+    background:white;
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    padding:40px 20px;
+    background:#ffe4ea;
+}
+
+/* FOOTER */
+footer{
+    background:#ff4d6d;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+
+@media(max-width:900px){
+    .products{
+        justify-content:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Velvet Crumbs</h1>
+<p>Soft Bites, Sweet Moments</p>
+<nav>
+<a href="#index0">Home</a>
+<a href="#products">Products</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="hero">
+<h2>Welcome to Velvet Crumbs Bakery</h2>
+<p>Fresh cakes, pastries and desserts made with love</p>
+<a href="Pcake.html" class="btn">Explore Cake</a>
+</div>
+
+<!-- PRODUCTS -->
+<h2 class="product-title" id="products">
+You'll love<br>OUR PRODUCTS
+</h2>
+
+<div class="products">
+
+<a href="Pcake.html">
+<div class="card">
+<img src="dispalyC.jpg" alt="Cakes">
+<h3>Cakes</h3>
+<p>20 Types</p>
+</div>
+</a>
+
+<a href="Ppastrys.html">
+<div class="card">
+<img src="dispalyP.jpg" alt="Pastries">
+<h3>Pastries</h3>
+<p>12 Types</p>
+</div>
+</a>
+
+<a href="PMuffins&Fruitcakes.html">
+<div class="card">
+<img src="displayM.jpg" alt="Muffins">
+<h3>Muffins</h3>
+<p>10 Types</p>
+</div>
+</a>
+
+<a href="Breads&Rolls.html">
+<div class="card">
+<img src="dispalyB.jpg" alt="Breads">
+<h3>Breads</h3>
+<p>11 Types</p>
+</div>
+</a>
+
+</div>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+<h2>About Our Bakery</h2>
+<p>
+Velvet Crumbs Bakery is known for freshly baked cakes, pastries and desserts.
+We use high quality ingredients to make every bite special.
+Every product is baked fresh daily for the best taste.
+</p>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+<h2>Contact Us</h2>
+<p>📞 +91 9960039565</p>
+<p>📧 velvetcrumbs@gmail.com</p>
+<p>📍 FC Road, Pune, Maharashtra</p>
+</div>
+
+<footer>
+<p>© 2026 Velvet Crumbs Bakery</p>
+</footer>
+
+</body>
+</html>

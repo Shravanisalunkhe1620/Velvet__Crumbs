@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Velvet Crumbs | Cakes</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#fff5f7;
+}
+
+/* HEADER */
+
+header{
+background:#ff4d6d;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+margin:0;
+}
+
+.cart{
+font-size:18px;
+cursor:pointer;
+color:white;
+text-decoration:none;
+}
+
+/* TITLE */
+
+.title{
+text-align:center;
+margin-top:35px;
+font-size:30px;
+color:#ff4d6d;
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+padding:40px;
+justify-items:center;
+}
+
+/* CARD */
+
+.card{
+background:white;
+width:220px;
+border-radius:15px;
+padding:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+height:150px;
+border-radius:10px;
+object-fit:cover;
+}
+
+.card h3{
+color:#ff4d6d;
+margin:12px 0 6px;
+font-size:18px;
+}
+
+.card p{
+color:#555;
+font-size:14px;
+margin:0;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.products{
+padding:20px;
+gap:15px;
+}
+
+.card{
+width:170px;
+}
+
+.card img{
+height:120px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Velvet Crumbs</h1>
+
+<a href="cart.html" class="cart">
+🛒 Cart (<span id="cartCount">0</span>)
+</a>
+
+</header>
+
+<h2 class="title">Choose Your Favorite Cake</h2>
+
+<div class="products">
+
+<a href="ChocolateCakee.html">
+<div class="card">
+<img src="ch.jpg">
+<h3>Chocolate Cake</h3>
+<p>Rs. 549</p>
+</div>
+</a>
+
+<a href="Cblackforest.html">
+<div class="card">
+<img src="blackForest.jpg">
+<h3>Black Forest Cake</h3>
+<p>Rs. 599</p>
+</div>
+</a>
+
+<a href="Credvelvet.html">
+<div class="card">
+<img src="redVelvetCake.jpg">
+<h3>Red Velvet Cake</h3>
+<p>Rs. 649</p>
+</div>
+</a>
+
+<a href="Cpineapple.html">
+<div class="card">
+<img src="Pineapple_Fruit_cake.webp">
+<h3>Pineapple Cake</h3>
+<p>Rs. 499</p>
+</div>
+</a>
+
+<a href="Cstrawberry.html">
+<div class="card">
+<img src="strawberry-cake-recipe-2-of-8.jpg">
+<h3>Strawberry Cake</h3>
+<p>Rs. 529</p>
+</div>
+</a>
+
+<a href="Cbutterscotch.html">
+<div class="card">
+<img src="butter.jpg">
+<h3>Butterscotch Cake</h3>
+<p>Rs. 579</p>
+</div>
+</a>
+
+<a href="Cfruitcake.html">
+<div class="card">
+<img src="fresh-fruit-cake.jpg">
+<h3>Fruit Cake</h3>
+<p>Rs. 559</p>
+</div>
+</a>
+
+<a href="Cvanilla.html">
+<div class="card">
+<img src="Vanilla..jpg">
+<h3>Vanilla Cake</h3>
+<p>Rs. 499</p>
+</div>
+</a>
+
+<a href="Ctruffle.html">
+<div class="card">
+<img src="truffle-cakes.jpg">
+<h3>Truffle Cake</h3>
+<p>Rs. 679</p>
+</div>
+</a>
+
+<a href="Ckitkat.html">
+<div class="card">
+<img src="kitkat.jpg">
+<h3>KitKat Cake</h3>
+<p>Rs. 699</p>
+</div>
+</a>
+
+<a href="Coreo.html">
+<div class="card">
+<img src="oreoCAKE.jpg">
+<h3>Oreo Cake</h3>
+<p>Rs. 649</p>
+</div>
+</a>
+
+<a href="Cferrero.html">
+<div class="card">
+<img src="ferrero_rochercake_main.jpg">
+<h3>Ferrero Rocher Cake</h3>
+<p>Rs. 749</p>
+</div>
+</a>
+
+<a href="CdryFruit.html">
+<div class="card">
+<img src="dryFruitCAKE.png">
+<h3>Dry Fruit Cake</h3>
+<p>Rs. 700</p>
+</div>
+</a>
+
+<a href="Cblueberry.html">
+<div class="card">
+<img src="Blueberry-Cake.jpg">
+<h3>Blueberry Cake</h3>
+<p>Rs. 629</p>
+</div>
+</a>
+
+<a href="Cmango.html">
+<div class="card">
+<img src="mangocake.jpg">
+<h3>Mango Cake</h3>
+<p>Rs. 599</p>
+</div>
+</a>
+
+<a href="Crasmalai.html">
+<div class="card">
+<img src="Rasmalaicake.jpg">
+<h3>Rasmalai Cake</h3>
+<p>Rs. 699</p>
+</div>
+</a>
+
+<a href="Ccaramel.html">
+<div class="card">
+<img src="Salted-Caramel-Cake.webp">
+<h3>Caramel Cake</h3>
+<p>Rs. 579</p>
+</div>
+</a>
+
+
+<a href="CwhiteForest.html">
+<div class="card">
+<img src="whiteForest.jpg">
+<h3>White Forest Cake</h3>
+<p>Rs. 600</p>
+</div>
+</a>
+
+
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+document.getElementById("cartCount").innerText = cart.length
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Orders | Velvet Crumbs</title>
+
+<style>
+
+body{
+  font-family:Arial;
+  background:#fff5f7;
+  margin:0;
+}
+
+/* NAVBAR */
+.navbar{
+  background:#ff4d6d;
+  color:white;
+  padding:15px 25px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:15px;
+}
+
+/* CONTAINER */
+.container{
+  padding:20px;
+}
+
+/* ORDER CARD */
+.order{
+  background:white;
+  padding:20px;
+  margin-bottom:15px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.order h3{
+  margin:0;
+  color:#ff4d6d;
+}
+
+/* EMPTY */
+.empty{
+  text-align:center;
+  margin-top:50px;
+  color:#888;
+}
+
+/* BUTTON */
+.cancelBtn{
+  margin-top:10px;
+  padding:10px 15px;
+  background:#ff4d6d;
+  border:none;
+  color:white;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+  <h2>Velvet Crumbs</h2>
+  <div>
+    <a href="Index0.html">Home</a>
+    <a href="order.html">Order</a>
+  </div>
+</div>
+
+<div class="container" id="orderList"></div>
+
+<script>
+
+let orders = JSON.parse(localStorage.getItem("orders")) || []
+let container = document.getElementById("orderList")
+
+function displayOrders(){
+
+container.innerHTML = ""
+
+if(orders.length === 0){
+container.innerHTML = "<div class='empty'>No orders yet 😢</div>"
+return
+}
+
+orders.slice().reverse().forEach((order,index) => {
+
+container.innerHTML += `
+<div class="order">
+<h3>${order.name}</h3>
+
+<p><b>Weight:</b> ${order.weight ? order.weight + " gm" : "Not selected"}</p>
+
+<p><b>Quantity:</b> ${order.qty}</p>
+
+<p><b>Price:</b> Rs. ${order.price}</p>
+
+<p><b>Notes:</b> ${order.notes || "None"}</p>
+
+<p><b>Date:</b> ${order.date}</p>
+
+<button class="cancelBtn" onclick="cancelOrder(${orders.length-1-index})">
+❌ Cancel Order
+</button>
+
+</div>
+`
+
+})
+
+}
+
+// ❌ cancel
+function cancelOrder(i){
+if(confirm("Cancel this order?")){
+orders.splice(i,1)
+localStorage.setItem("orders", JSON.stringify(orders))
+displayOrders()
+}
+}
+
+displayOrders()
+
+</script>
+
+</body>
+</html>

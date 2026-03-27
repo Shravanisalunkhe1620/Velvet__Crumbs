@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Order Successful | Velvet Crumbs</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg, #ffccd5, #fff5f7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* MAIN BOX */
+.box{
+  background:white;
+  padding:40px;
+  border-radius:15px;
+  text-align:center;
+  width:370px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  animation:fadeIn 0.8s ease;
+}
+
+/* CHECK ICON */
+.check{
+  font-size:65px;
+  color:#28a745;
+  margin-bottom:15px;
+  animation:pop 0.5s ease;
+}
+
+/* TEXT */
+h2{
+  margin:10px 0;
+  color:#333;
+}
+
+p{
+  color:#666;
+  font-size:14px;
+}
+
+/* BUTTON GROUP */
+.btns{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:20px;
+}
+
+/* BUTTON STYLE */
+.btn{
+  text-decoration:none;
+  background:#ff4d6d;
+  color:white;
+  padding:12px;
+  border-radius:25px;
+  transition:0.3s;
+  font-weight:bold;
+}
+
+.btn:hover{
+  background:#e63956;
+  transform:scale(1.03);
+}
+
+/* SECONDARY BUTTON */
+.btn.secondary{
+  background:#333;
+}
+
+.btn.secondary:hover{
+  background:#111;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes pop{
+  0%{transform:scale(0);}
+  80%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="check">✔</div>
+
+<h2>Order Successful!</h2>
+
+<p>Your order has been placed successfully 🎉</p>
+<p>We will deliver your delicious treats soon 🍰</p>
+
+<div class="btns">
+  <a href="index.html" class="btn">🏠 Go Home</a>
+  <a href="orders.html" class="btn">📦 View Orders</a>
+  <a href="cart.html" class="btn secondary">🛒 View Cart</a>
+</div>
+
+</div>
+
+</body>
+</html>
